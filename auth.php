@@ -134,9 +134,9 @@ class auth_plugin_link extends auth_plugin_base {
                 $username = htmlspecialchars($_REQUEST['username']);
                 $password = htmlspecialchars($_REQUEST['password']);
 
-                // User existence check
+                // User existence check.
                 if ($user = $DB->get_record('user', array( 'username' => $username) )) {
-                    // Verification of authorization data
+                    // Verification of authorization data.
                     if (validate_internal_user_password($user, $password)) {
                         complete_user_login($user);
                         $this->redirect_user();
