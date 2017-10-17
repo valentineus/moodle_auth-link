@@ -57,7 +57,7 @@ class auth_plugin_link extends auth_plugin_base {
     function user_login($username, $password) {
         global $CFG, $DB;
 
-        if ($user = $DB->get_record('user', array('username'=>$username, 'mnethostid'=>$CFG->mnet_localhost_id))) {
+        if ($user = $DB->get_record('user', array('username' => $username, 'mnethostid' => $CFG->mnet_localhost_id))) {
             return validate_internal_user_password($user, $password);
         }
 
@@ -81,7 +81,7 @@ class auth_plugin_link extends auth_plugin_base {
      * @return bool
      */
     function is_internal() {
-        //we do not know if it was internal or external originally
+        // we do not know if it was internal or external originally
         return true;
     }
 
@@ -156,7 +156,7 @@ class auth_plugin_link extends auth_plugin_base {
 
         if (isset($SESSION->wantsurl)) {
             $redirect = $SESSION->wantsurl;
-        } elseif (isset($_GET['wantsurl'])) {
+        } else if (isset($_GET['wantsurl'])) {
             $redirect = htmlspecialchars($_GET['wantsurl']);
         } else {
             $redirect = $CFG->wwwroot;
