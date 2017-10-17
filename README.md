@@ -7,9 +7,7 @@
 Authorization plugin for Moodle.
 Adds the ability to authorize a user by a direct link.
 
-<a name="installation">
-    <h2>Installation</h2>
-</a>
+## Installation
 
 Get the installation package in any of the available methods:
 
@@ -18,9 +16,7 @@ Get the installation package in any of the available methods:
 
 In Moodle in the administration panel go to the "Plugins" section and make a standard installation of the plug-in.
 
-<a name="using">
-    <h2>Using</h2>
-</a>
+## Using
 
 Pass the variables `username` and `password` in any standard way.
 Variables are read from a file `$ _REQUEST`, which guarantees GET and POST requests performance, as well as support for the cookie.
@@ -30,9 +26,7 @@ Example of a link that authorizes a user on the course:
 https://yourwebserver.org/course/view.php?id=2&username=guest&password=qwerty
 ```
 
-<a name="build">
-    <h2>Build</h2>
-</a>
+## Build
 
 Self-assembly package is as follows:
 
@@ -47,9 +41,7 @@ cd ./auth-link
 /bin/sh build.sh
 ```
 
-<a name="license">
-    <h2>License</h2>
-</a>
+## License
 
 <img height="256px" alt="GNU Banner" src="https://www.gnu.org/graphics/runfreegnu.png" />
 
