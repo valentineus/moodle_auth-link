@@ -67,7 +67,7 @@ class auth_plugin_link extends auth_plugin_base {
     /**
      * No password updates.
      */
-    public function user_update_password($user, $newpassword) {
+    public function user_update_password() {
         return false;
     }
 
