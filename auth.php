@@ -135,7 +135,7 @@ class auth_plugin_link extends auth_plugin_base {
                 $password = htmlspecialchars($_REQUEST['password']);
 
                 // User existence check.
-                if ($user = $DB->get_record('user', array( 'username' => $username) )) {
+                if ($user = $DB->get_record('user', array('username' => $username) )) {
                     // Verification of authorization data.
                     if (validate_internal_user_password($user, $password)) {
                         complete_user_login($user);
@@ -152,12 +152,12 @@ class auth_plugin_link extends auth_plugin_base {
     public function redirect_user() {
         global $CFG, $SESSION;
 
+        $redirect = $CFG->wwwroot;
+
         if (isset($SESSION->wantsurl)) {
             $redirect = $SESSION->wantsurl;
         } else if (isset($_GET['wantsurl'])) {
             $redirect = htmlspecialchars($_GET['wantsurl']);
-        } else {
-            $redirect = $CFG->wwwroot;
         }
 
         redirect($redirect);
