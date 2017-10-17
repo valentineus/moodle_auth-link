@@ -10,6 +10,7 @@ Adds the ability to authorize a user by a direct link.
 <a name="installation">
     <h2>Installation</h2>
 </a>
+
 Get the installation package in any of the available methods:
 
 * [GitHub Releases](https://github.com/valentineus/auth-link/releases).
@@ -20,6 +21,7 @@ In Moodle in the administration panel go to the "Plugins" section and make a sta
 <a name="using">
     <h2>Using</h2>
 </a>
+
 Pass the variables `username` and `password` in any standard way.
 Variables are read from a file `$ _REQUEST`, which guarantees GET and POST requests performance, as well as support for the cookie.
 
@@ -31,6 +33,7 @@ https://yourwebserver.org/course/view.php?id=2&username=guest&password=qwerty
 <a name="build">
     <h2>Build</h2>
 </a>
+
 Self-assembly package is as follows:
 
 * Clone the repository:
