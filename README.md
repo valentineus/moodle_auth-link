@@ -1,4 +1,8 @@
 # Authorization by direct link
+[![GitHub Release](https://img.shields.io/github/release/valentineus/auth-link.svg)](https://github.com/valentineus/auth-link/releases)
+[![Build Status](https://travis-ci.org/valentineus/auth-link.svg?branch=master)](https://travis-ci.org/valentineus/auth-link)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/b3b4cf2153484a44ada1195cf721f335)](https://www.codacy.com/app/valentineus/auth-link)
+[![Gitter Badge](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/valentineus/auth-link)
 
 Authorization plugin for Moodle.
 Adds the ability to authorize a user by a direct link.
