@@ -23,8 +23,8 @@
  */
 
 defined('MOODLE_INTERNAL') || die();
-$plugin->release   = '0.0.1 (Build: 2017101700)';
-$plugin->version   = 2017101700;
+$plugin->release   = '1.0.0 (Build: 2017101701)';
+$plugin->version   = 2017101701;
 $plugin->requires  = 2016112900;
 $plugin->component = 'auth_link';
-$plugin->maturity  = MATURITY_RC;
+$plugin->maturity  = MATURITY_STABLE;
