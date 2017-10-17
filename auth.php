@@ -54,7 +54,7 @@ class auth_plugin_link extends auth_plugin_base {
      * @param string $password The password
      * @return bool Authentication success or failure.
      */
-    function user_login($username, $password) {
+    public function user_login($username, $password) {
         global $CFG, $DB;
 
         if ($user = $DB->get_record('user', array('username' => $username, 'mnethostid' => $CFG->mnet_localhost_id))) {
@@ -67,12 +67,11 @@ class auth_plugin_link extends auth_plugin_base {
     /**
      * No password updates.
      */
-    function user_update_password($user, $newpassword) {
+    public function user_update_password($user, $newpassword) {
         return false;
     }
 
-    function prevent_local_passwords() {
-        // just in case, we do not want to loose the passwords
+    public function prevent_local_passwords() {
         return false;
     }
 
@@ -80,15 +79,14 @@ class auth_plugin_link extends auth_plugin_base {
      * Returns true if this authentication plugin is 'internal'.
      * @return bool
      */
-    function is_internal() {
-        // we do not know if it was internal or external originally
+    public function is_internal() {
         return true;
     }
 
     /**
      * No changing of password.
      */
-    function can_change_password() {
+    public function can_change_password() {
         return false;
     }
 
@@ -97,14 +95,14 @@ class auth_plugin_link extends auth_plugin_base {
      * be used.
      * @return moodle_url
      */
-    function change_password_url() {
+    public function change_password_url() {
         return null;
     }
 
     /**
      * No password resetting.
      */
-    function can_reset_password() {
+    public function can_reset_password() {
         return true;
     }
 
@@ -112,21 +110,21 @@ class auth_plugin_link extends auth_plugin_base {
      * Returns true if plugin can be manually set.
      * @return bool
      */
-    function can_be_manually_set() {
+    public function can_be_manually_set() {
         return true;
     }
 
     /**
      * Hook for overriding behaviour before going to the login page.
      */
-    function pre_loginpage_hook() {
+    public function pre_loginpage_hook() {
         $this->loginpage_hook();
     }
 
     /**
      * Hook for overriding behaviour of login page.
      */
-    function loginpage_hook() {
+    public function loginpage_hook() {
         global $DB;
 
         if (!isloggedin()) {
@@ -151,7 +149,7 @@ class auth_plugin_link extends auth_plugin_base {
     /**
      * Redirect client to the original target.
      */
-    function redirect_user() {
+    public function redirect_user() {
         global $CFG, $SESSION;
 
         if (isset($SESSION->wantsurl)) {
