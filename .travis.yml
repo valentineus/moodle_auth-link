@@ -66,3 +66,5 @@ jobs:
         file: "../auth-link.zip"
         email: "info@valentineus.link"
         api_key: $GITHUB_PROJECT_TOKEN
+        on:
+          tags: true
