@@ -1,0 +1,50 @@
+language: php
+
+php:
+- 7.0
+
+sudo: false
+
+os: "linux"
+
+matrix:
+  allow_failures:
+    - php: 7.0
+
+env:
+  matrix:
+    - DB=pgsql MOODLE_BRANCH=MOODLE_32_STABLE
+    - DB=pgsql MOODLE_BRANCH=MOODLE_33_STABLE
+    - DB=mysqli MOODLE_BRANCH=MOODLE_32_STABLE
+    - DB=mysqli MOODLE_BRANCH=MOODLE_33_STABLE
+
+before_install:
+  - cd ../..
+  - composer selfupdate
+  - composer create-project -n --no-dev moodlerooms/moodle-plugin-ci ci ^1
+  - export PATH="$(cd ci/bin; pwd):$(cd ci/vendor/bin; pwd):$PATH"
+
+install:
+  - moodle-plugin-ci install
+
+script:
+  - moodle-plugin-ci phplint
+  - moodle-plugin-ci phpcpd
+  - moodle-plugin-ci phpmd
+  - moodle-plugin-ci codechecker
+  - moodle-plugin-ci shifter
+
+jobs:
+  include:
+    - stage: deploy
+    
+      before_deploy:
+        - git stash --all
+        - /bin/sh build.sh
+        
+      deploy:
+        provider: releases
+        skip_cleanup: true
+        file: "../auth-link.zip"
+        email: "info@valentineus.link"
+        api_key: $GITHUB_PROJECT_TOKEN
