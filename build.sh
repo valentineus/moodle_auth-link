@@ -11,6 +11,7 @@ export PATH="$PATH:/usr/local/scripts"
 
 # Build the package
 cd ..
+mv "./moodle_auth-link" "./auth-link"
 zip -9 -r "auth-link.zip" "auth-link"  \
         -x "auth-link/.git*"       \
         -x "auth-link/.travis.yml" \
