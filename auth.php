@@ -127,13 +127,11 @@ class auth_plugin_link extends auth_plugin_base {
     public function loginpage_hook() {
         global $DB;
 
+        $username = optional_param('username', '', PARAM_RAW);
+        $password = optional_param('password', '', PARAM_RAW);
+
         if (!isloggedin()) {
-            if (isset($_REQUEST['username']) &&
-                isset($_REQUEST['password'])) {
-
-                $username = htmlspecialchars($_REQUEST['username']);
-                $password = htmlspecialchars($_REQUEST['password']);
-
+            if (!empty($username) && !empty($password)) {
                 // User existence check.
                 if ($user = $DB->get_record('user', array('username' => $username) )) {
                     // Verification of authorization data.
@@ -152,12 +150,13 @@ class auth_plugin_link extends auth_plugin_base {
     public function redirect_user() {
         global $CFG, $SESSION;
 
+        $wantsurl = optional_param('wantsurl', '', PARAM_URL);
         $redirect = new moodle_url($CFG->wwwroot, $_GET);
 
         if (isset($SESSION->wantsurl)) {
             $redirect = new moodle_url($SESSION->wantsurl, $_GET);
-        } else if (isset($_GET['wantsurl'])) {
-            $redirect = htmlspecialchars($_GET['wantsurl']);
+        } else if (!empty($wantsurl)) {
+            $redirect = new moodle_url($wantsurl);
         }
 
         redirect($redirect);
