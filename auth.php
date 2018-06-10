@@ -152,10 +152,10 @@ class auth_plugin_link extends auth_plugin_base {
     public function redirect_user() {
         global $CFG, $SESSION;
 
-        $redirect = $CFG->wwwroot;
+        $redirect = new moodle_url($CFG->wwwroot, $_GET);
 
         if (isset($SESSION->wantsurl)) {
-            $redirect = $SESSION->wantsurl;
+            $redirect = new moodle_url($SESSION->wantsurl, $_GET);
         } else if (isset($_GET['wantsurl'])) {
             $redirect = htmlspecialchars($_GET['wantsurl']);
         }
